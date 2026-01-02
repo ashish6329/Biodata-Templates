@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Biodata</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="biodata">
+    <div class="header">
+      <!-- replace photo.jpg with your actual image file name -->
+      <img src="WhatsApp xxxxxx.jpeg" class="photo">
+      <h1>Biodata</h1>
+      <h2>Ashish Varshney</h2>
+    </div>
+
+    <section>
+      <h3>Personal Details</h3>
+      <table>
+        <tr><td>Name</td><td>Ashish Varshney</td></tr>
+        <tr><td>Date of Birth</td><td>05 June xxxx</td></tr>
+        <tr><td>Birth Time</td><td>xx:xx:xx</td></tr>
+        <tr><td>Place of Birth</td><td> Uttar Pradesh</td></tr>
+        <tr><td>Religion</td><td>Hindu</td></tr>
+        <tr><td>Caste</td><td>Varshney</td></tr>
+        <tr><td>Height</td><td>x ft x in</td></tr>
+        <tr><td>Blood Group</td><td>O+</td></tr>
+        <tr><td>Education</td><td>M.Tech from IIT Roorkee</td></tr>
+        <tr><td>Occupation</td><td>Technical Lead at HCLSoftware</td></tr>
+        <tr><td>Annual Income</td><td>Decent x-figure package</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h3>Family Details</h3>
+      <table>
+        <tr><td>Father’s Name</td><td>xxxxxxxx Varshney</td></tr>
+        <tr><td>Mother’s Name</td><td>xxxx Varshney (xxxx,Aligarh)</td></tr>
+        <tr><td>Elder Brother 1</td><td>xxxx Varshney (xxxx,xxxxx,xxxx,xxxx)</td></tr>
+        <tr><td>Elder Brother 1 Wife</td><td>xxxxx Varshney (xxxx,xxxxx,xxxxx)(Kasganj U.P)</td></tr>
+        <tr><td>Elder Brother 1 Son</td><td>xxxx Varshney (Student, xxxxxx School, xxxxxxx)</td></tr>
+        <tr><td>Elder Brother 1 Daughter</td><td>xxxx Varshney (Student, xxxxxx School, xxxxxxx)</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h3>Contact Details</h3>
+      <table>
+        <tr>
+          <td>Address</td>
+          <td>xxxxxxxxxxx xxxxxxxxx xxxxxxxxxxxx xxxxxxxxxx</td>
+        </tr>
+        <tr>
+          <td>Mobile Numbers</td>
+          <td>xxxxxxxxx,xxxxxxxx,xxxxxxxx</td>
+        </tr>
+      </table>
+    </section>
+  </div>
+   <!-- PDF Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- PDF SCRIPT -->
+<script>
+async function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const element = document.querySelector(".biodata");
+
+  const canvas = await html2canvas(element, { scale: 2, useCORS: true });
+  const imgData = canvas.toDataURL("image/jpeg", 1.0);
+
+  const pdf = new jsPDF("p", "mm", "a4");
+  const pdfWidth = 210;
+  const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+  pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+  pdf.save("Ashish_Varshney_Biodata.pdf");
+}
+</script>
+</body>
+</html>
