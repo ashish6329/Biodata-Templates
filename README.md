@@ -1,2 +1,3 @@
 # Biodata-Templates
-Biodata templates 
+clone this repository
+replace dummy value with actual value
